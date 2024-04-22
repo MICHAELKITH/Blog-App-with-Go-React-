@@ -1,8 +1,13 @@
 package database
 import (
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
+  "database/sql"
+  "fmt"
+  _ "github.com/lib/pq"
   )
   
-  dsn := "host=localhost user=gorm password=gorm dbname=gorm port=9920 sslmode=disable TimeZone=Asia/Shanghai"
-  db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+  func database (){
+    dsn := "host=localhost user=postgres password=secretkey dbname=postblog port=5432 sslmode=disable"
+    db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+    
+  }
+ 
