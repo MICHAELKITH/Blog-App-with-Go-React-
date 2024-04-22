@@ -6,9 +6,11 @@ import (
 	"log"
 
 	_ "github.com/lib/pq"
+	"gorm.io/gorm"
 )
-  
-  func database (){
+ 
+var DBconn *gorm.DB
+  func ConnectDB (){
     dsn := "host=localhost user=postgres password=secretkey dbname=postblog port=5432 sslmode=disable"
     db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
     defer db.close()
