@@ -21,7 +21,7 @@ type Config struct {
 var DBconn *gorm.DB
 
 func ConnectDB() {
-	dsn := "host=localhost user=postgres password=secretkey dbname=postblog port=5432 sslmode=disable"
+	dsn := " user=postgres password=secretkey dbname=postblog port=5432 sslmode=disable"
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	defer db.close()
 	if err != nil {
