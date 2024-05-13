@@ -2,10 +2,8 @@ package database
 
 import (
 	"database/sql"
-	"gorm.io/driver/postgres"
+    _ "github.com/lib/pq"
 	"log"
-
-	_ "github.com/lib/pq"
 	"gorm.io/gorm"
 )
 
@@ -21,15 +19,11 @@ type Config struct {
 var DBconn *gorm.DB
 
 func ConnectDB() {
-	dsn := " user=postgres password=secretkey dbname=postblog port=5432 sslmode=disable"
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	defer db.close()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	if err = db.Ping(); err != nil {
-		log.Fatal(err)
-	}
+	
+	db, err := sql.Open("postgres", "postgres://username:password@localhost/database_name?sslmode=disable")
+if err != nil {
+    log.Fatal(err)
+}
+defer db.Close()
 
 }
